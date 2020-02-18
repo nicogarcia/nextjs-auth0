@@ -37,7 +37,11 @@ function loginHandler(settings, clientProvider) {
                 value: state,
                 maxAge: 60 * 60
             },
-            ...(redirectTo ? [{ name: 'a0:redirectTo', value: redirectTo, maxAge: 60 * 60 }] : [])
+            {
+                name: 'a0:redirectTo',
+                value: redirectTo || '/',
+                maxAge: 60 * 60
+            }
         ]);
         // Redirect to the authorize endpoint.
         res.writeHead(302, {
